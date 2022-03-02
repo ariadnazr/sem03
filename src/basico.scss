@@ -1,0 +1,145 @@
+$primary:rgb(255, 255, 255);
+$secondary:rgb(255, 216, 240);
+$terciary:rgb(215, 235, 211);
+$fourth:rgb(175, 218, 238);
+$fontSize:10pt;
+
+@mixin flex ($flexDir, $align) {
+    display: flex;
+        flex-direction: $flexDir;
+        flex-wrap: wrap;
+        justify-content: $align;
+}
+
+@mixin hover{
+    color:$fourth
+}
+
+:root{
+    font-size: $fontSize;
+    font-family: 'Fredoka One', cursive;
+}
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    
+    
+}
+
+.top{
+    background-color: $secondary;
+    padding: 2%;
+    color: $primary;
+    text-align: center;
+    font-size: $fontSize *2;
+}
+
+.menu{
+    background-color: $terciary;
+    padding: 1%;
+
+    ul{
+        @include flex(row,center);
+
+        li{
+            padding-left: 2%;
+        }
+
+        a{
+            font-size: $fontSize;
+            color: $primary;
+
+            &:hover{
+                @include hover()
+            }
+            
+        }
+    }
+}
+
+.sectionMain{
+
+    margin-left: 15%;
+    margin-top: 5%;
+    margin-right: 15%;
+    padding: 3%;
+
+    background-color: $secondary;
+    border-radius: 10px;
+    
+    display: grid;
+
+    grid-template-areas: "titulo      menuSeccion"
+                         "descripcion imagenDetalle"
+                         "menuDetalle menuDetalle";
+
+    .titDetalle{
+        grid-area: titulo;
+    }
+
+    .subMenu{
+        grid-area: menuSeccion;
+    }
+
+    .description{
+        grid-area: descripcion;
+    }
+
+    .img{
+        grid-area: imagenDetalle;
+    }
+
+    .menuDetalles{
+        grid-area: menuDetalle;
+
+            li{
+
+                &:hover{
+                    @include hover();
+                }
+            }
+    }
+
+    .subMenu{
+        @include flex(row, space-around);
+
+            li{
+                padding: 1rem;
+
+                a{
+                    color: black;
+
+                    &:hover{
+                        @include hover()
+                    }
+                }
+
+                
+            }
+    }
+
+    .menuDetalles{
+        @include flex(row, center);
+
+        li{
+            padding-left: 10%;
+            padding-top: 2%;
+        }
+    }
+}
+
+img{
+    width: 90%;
+    display: flex;
+    margin-left: 5%;
+    border-radius: 10px;
+
+        &:hover{
+            opacity: 70%;
+        }
+}
+
